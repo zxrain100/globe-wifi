@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/app_bg"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/main_title" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/topConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/topTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@mipmap/ic_connected"
+                        android:drawablePadding="8dp"
+                        android:text="WiFi Not Connected"
+                        android:textColor="#8AFFA8"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/topDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Connected Successful"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="133dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/item_bg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="133dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/itemSecurity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/ic_security"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:text="Security"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/itemNetTest"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/ic_nettest"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:text="Network test"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/itemVpn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:drawableTop="@mipmap/ic_vpn"
+                            android:drawablePadding="6dp"
+                            android:gravity="center"
+                            android:text="VPN"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:visibility="invisible" />
+
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/adDefault"
+                        android:layout_width="match_parent"
+                        android:layout_height="226dp"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitXY"
+                        android:visibility="visible"
+                        app:srcCompat="@mipmap/ic_ad_def" />
+
+                    <include
+                        android:id="@+id/adView"
+                        layout="@layout/native_ad_layout" />
+                </FrameLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+
+                    <LinearLayout
+                        android:id="@+id/wifiLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/connectLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Connected"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="20dp"
+                                android:background="@drawable/sh_select_wifi_item"
+                                android:gravity="center_vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    app:srcCompat="@mipmap/ic_item_wifi" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/itemLabel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="52dp"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="wifi name"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    app:srcCompat="@mipmap/ic_item_connect" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/listLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Avaliable"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/mWiFiRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="20dp"
+                                android:background="#101C28"
+                                tools:listitem="@layout/wifi_list_item" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/noResultTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgLoading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@mipmap/ic_loading" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/noContent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="No Content"
+                            android:textColor="#ACACAC"
+                            android:textSize="13sp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

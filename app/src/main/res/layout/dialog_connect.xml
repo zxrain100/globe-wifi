@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_7f000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/sh_input_pwd_bg"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="22dp"
+                android:gravity="center_horizontal"
+                android:text="Wi-Fi Name"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <LinearLayout
+                    android:id="@+id/inputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="18dp"
+                    android:visibility="visible">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:layout_marginTop="16dp"
+
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/url_et_bg"
+                            android:imeOptions="actionSearch"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:paddingEnd="50dp"
+                            android:paddingStart="16dp"
+                            android:singleLine="true"
+                            android:textColor="#333333"
+                            android:textSize="14sp"
+                            tools:ignore="RtlSymmetry" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/isVisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            app:srcCompat="@mipmap/ic_visible" />
+
+                    </FrameLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_vertical"
+                        android:visibility="visible"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/rb_check"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:button="@drawable/sel_checkbox"
+                            android:checked="false" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColor="#333333"
+                            android:textSize="12sp"
+                            android:text="Show the password" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCancel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/sh_cancel_bg"
+                            android:gravity="center"
+                            android:text="Cancel"
+                            android:textColor="#A1A7A5"
+                            android:textSize="16sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvConnect"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/sh_connect_bg"
+                            android:gravity="center"
+                            android:text="Connect"
+                            android:textColor="#00FFA0"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="16dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/adDef"
+                    android:layout_width="match_parent"
+                    android:layout_height="226dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    app:srcCompat="@mipmap/ic_ad_def" />
+
+                <include
+                    android:id="@+id/adView"
+                    layout="@layout/native_ad_layout" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

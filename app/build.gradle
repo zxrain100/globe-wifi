@@ -1,0 +1,127 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'stringfog'
+    id 'android-junk-code'
+}
+
+// 导入RandomKeyGenerator类，如果不使用RandomKeyGenerator，可以删除此行
+import com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator
+
+stringfog {
+    enable true
+    debug false
+    // 指定加解密的具体实现类，可以用默认实现的xor库或者aes-cbc库，也可以自己定制实现，记得配置dependencies
+    implementation 'com.github.megatronking.stringfog.xor.StringFogImpl'
+    // 指定需加密的代码包路径，可配置多个，未指定将默认全部加密
+    fogPackages = ["com.github.megatronking.stringfog"]
+    // 可选（3.0版本新增）：指定密钥生成器，默认使用长度8的随机密钥（每个字符串均有不同随机密钥）,
+    // 也可以指定一个固定的密钥：HardCodeKeyGenerator("This is a key")
+    kg new RandomKeyGenerator()
+    // 可选（4.0版本新增）：用于控制字符串加密后在字节码中的存在形式, 默认为base64，
+    // 也可以使用text或者bytes
+    mode base64
+}
+
+androidJunkCode {
+    variantConfig {
+        release {
+//变体名称，如果没有设置productFlavors就是buildType名称，如果有设置productFlavors就是flavor+buildType，例如（freeRelease、proRelease）
+            packageBase = "lk.gbw.sw"  //生成java类根包名 混淆文件里也需要改
+            packageCount = 30 //生成包数量
+            activityCountPerPackage = 3 //每个包下生成Activity类数量
+            excludeActivityJavaFile = false
+            //是否排除生成Activity的Java文件,默认false(layout和写入AndroidManifest.xml还会执行)，主要用于处理类似神策全埋点编译过慢问题
+            otherCountPerPackage = 50  //每个包下生成其它类的数量
+            methodCountPerClass = 20  //每个类下生成方法数量
+            resPrefix = "gbw_"  //生成的layout、drawable、string等资源名前缀
+            drawableCount = 300  //生成drawable资源数量
+            stringCount = 300  //生成string数量
+        }
+    }
+}
+
+android {
+    namespace 'com.gbw.wifi'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.gbw.wifi"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+
+    // glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    kapt("com.github.bumptech.glide:compiler:4.11.0")
+
+    //facebook
+    //https://developers.facebook.com/docs/android/getting-started
+    implementation("com.facebook.android:facebook-android-sdk:12.3.0")
+    //广告库
+    //AdMob
+    implementation("com.google.android.gms:play-services-ads:21.5.0")
+
+    // room
+    api("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api("androidx.room:room-ktx:2.5.0")
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:30.5.0')
+    // Add the dependencies for the Remote Config and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-config'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'com.blankj:utilcodex:1.31.0'
+
+    implementation 'com.github.megatronking.stringfog:xor:4.0.1'
+
+
+    //EventBus
+    implementation("org.greenrobot:eventbus:3.3.1")
+
+    //wifi util
+    implementation("io.github.thanosfisherman.wifiutils:wifiutils:1.6.6")
+    //test speed
+    implementation("fr.bmartel:jspeedtest:1.32.1")
+}

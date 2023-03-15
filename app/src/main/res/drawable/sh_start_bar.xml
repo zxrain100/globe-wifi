@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@android:id/background">
+            <shape>
+                <corners android:radius="3dp"/>
+                <solid android:color="#566878" />
+            </shape>
+        </item>
+
+        <item android:id="@android:id/progress">
+            <clip
+                android:clipOrientation="horizontal"
+                android:gravity="left">
+                <shape>
+                    <corners android:radius="3dp"/>
+                    <gradient
+                        android:angle="0"
+                        android:startColor="#00FF9A"
+                        android:endColor="#00FF9A"/>
+                </shape>
+            </clip>
+        </item>
+    </layer-list>
+
+
+
+
+
+<!--    &lt;!&ndash;设置ProgressBar背景色&ndash;&gt;-->
+<!--    <item android:id="@android:id/background">-->
+<!--        <shape>-->
+<!--            <solid android:color="#4E506E"/>-->
+<!--            <corners android:radius="12dp"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--    &lt;!&ndash;设置ProgressBar进度条颜色&ndash;&gt;-->
+<!--    <item android:id="@android:id/progress">-->
+<!--        <scale android:scaleWidth="100%"-->
+<!--            android:drawable="@drawable/sh_update_progress"/>-->
+<!--    </item>-->
+<!--</layer-list>-->

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "10148277164540",
+    "project_id": "com-gbw-wifi",
+    "storage_bucket": "com-gbw-wifi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014827764540:android:9219073d934fc037ce2ec39",
+        "android_client_info": {
+          "package_name": "com.gbw.wifi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014827704540-bf3j5ivua9l3svb6iin3tic1e7dnphuth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgvMF1rf-9wQ7uFeHdwmiTT8hhrAlmGJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014827704540-bf3j5ivua9l3svb6iin3ticd1e7nphuth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

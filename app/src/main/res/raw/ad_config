@@ -1,0 +1,39 @@
+{
+	"gbw_config": [
+		{
+			"gbw_key": "gbw_inter_s",
+			"gbw_ids": [
+				{
+					"gbw_id": "ca-app-pub-3940256099942544/3419835294",
+					"gbw_priority": 3,
+					"gbw_type": "open"
+				},
+				{
+					"gbw_id": "ca-app-pub-3940256099942544/1033173712",
+					"gbw_priority": 2,
+					"gbw_type": "inter"
+				}
+			]
+		},
+		{
+			"gbw_key": "gbw_native_h",
+			"gbw_ids": [
+				{
+					"gbw_id": "ca-app-pub-3940256099942544/2247696110",
+					"gbw_priority": 1,
+					"gbw_type": "nav"
+				}
+			]
+		},
+		{
+			"gbw_key": "gbw_native_r",
+			"gbw_ids": [
+				{
+					"gbw_id": "ca-app-pub-3940256099942544/2247696110",
+					"gbw_priority": 1,
+					"gbw_type": "nav"
+				}
+			]
+		}
+	]
+}
