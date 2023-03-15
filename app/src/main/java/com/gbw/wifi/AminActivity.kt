@@ -26,9 +26,11 @@ class AminActivity : BaseActivity() {
         if (type == 0) {
             binding.midImg.setImageResource(R.mipmap.ic_anim_security)
             binding.tvDesc.text = "Testing your phone security"
+            binding.tvTitle.text = "Safety Test…"
         } else if (type == 1) {
             binding.midImg.setImageResource(R.mipmap.ic_anim_net)
             binding.tvDesc.text = "Testing your phone Network"
+            binding.tvTitle.text = "Network Test…"
         }
 
         startCleanAmin()

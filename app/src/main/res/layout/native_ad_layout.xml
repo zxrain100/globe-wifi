@@ -50,6 +50,19 @@
                     android:layout_gravity="top"
                     android:layout_margin="4dp" />
 
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:background="@drawable/sh_ad"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="AD"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </FrameLayout>
 
 
@@ -90,12 +103,12 @@
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
-<!--                        <ImageView-->
-<!--                            android:layout_width="60dp"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:src="@mipmap/ad_attribution"-->
-<!--                            tools:ignore="ContentDescription" />-->
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="60dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginTop="4dp"-->
+                        <!--                            android:src="@mipmap/ad_attribution"-->
+                        <!--                            tools:ignore="ContentDescription" />-->
                     </LinearLayout>
 
 
@@ -112,12 +125,14 @@
 
                 <Button
                     android:id="@+id/ad_action"
-                    android:layout_width="76dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/sh_ad_action"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"
                     android:textColor="#00FFA0"
                     android:textSize="12sp"
                     app:backgroundTint="@null" />

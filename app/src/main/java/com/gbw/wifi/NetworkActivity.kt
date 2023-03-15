@@ -7,17 +7,18 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.gbw.wifi.databinding.ActivityNetworkBinding
 import kotlinx.coroutines.*
+import kotlin.random.Random
 
 class NetworkActivity : BaseActivity() {
 
 
-    private lateinit var mViewContainer: ActivityNetworkBinding
+    private lateinit var binding: ActivityNetworkBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewContainer = ActivityNetworkBinding.inflate(layoutInflater)
-        setContentView(mViewContainer.root)
-        mViewContainer.statusBar.setStatusBar()
+        binding = ActivityNetworkBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.statusBar.setStatusBar()
 
         loadAd()
 
@@ -32,7 +33,7 @@ class NetworkActivity : BaseActivity() {
             } else {
                 "High latency, poor game physical examination."
             }
-            mViewContainer.tvGameTip.text = gTip
+            binding.tvGameTip.text = gTip
 
             val speed = GBW.speedInfo.rateBit / (1024 * 1024f)
 
@@ -48,26 +49,26 @@ class NetworkActivity : BaseActivity() {
 
             when (type) {
                 3 -> {
-                    mViewContainer.ivTemp3.setImageResource(R.mipmap.ic_arrow_green)
-                    mViewContainer.ivPoint4.setImageResource(R.mipmap.ic_poing_done)
-                    mViewContainer.tv4k.setTextColor(ContextCompat.getColor(this, R.color.color_video_green))
+                    binding.ivTemp3.setImageResource(R.mipmap.ic_arrow_green)
+                    binding.ivPoint4.setImageResource(R.mipmap.ic_poing_done)
+                    binding.tv4k.setTextColor(ContextCompat.getColor(this, R.color.color_video_green))
 
                 }
                 2 -> {}
                 1 -> {
-                    mViewContainer.ivPoint2.setImageResource(R.mipmap.ic_poing_done)
-                    mViewContainer.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
-                    mViewContainer.ivPoint3.setImageResource(R.mipmap.ic_point_black)
-                    mViewContainer.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+                    binding.ivPoint2.setImageResource(R.mipmap.ic_poing_done)
+                    binding.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
+                    binding.ivPoint3.setImageResource(R.mipmap.ic_point_black)
+                    binding.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
                 }
                 0 -> {
-                    mViewContainer.ivPoint1.setImageResource(R.mipmap.ic_poing_done)
-                    mViewContainer.ivTemp1.setImageResource(R.mipmap.ic_arrow_black)
-                    mViewContainer.ivPoint2.setImageResource(R.mipmap.ic_point_black)
-                    mViewContainer.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
-                    mViewContainer.ivPoint3.setImageResource(R.mipmap.ic_point_black)
-                    mViewContainer.tv720p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
-                    mViewContainer.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+                    binding.ivPoint1.setImageResource(R.mipmap.ic_poing_done)
+                    binding.ivTemp1.setImageResource(R.mipmap.ic_arrow_black)
+                    binding.ivPoint2.setImageResource(R.mipmap.ic_point_black)
+                    binding.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
+                    binding.ivPoint3.setImageResource(R.mipmap.ic_point_black)
+                    binding.tv720p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+                    binding.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
                 }
             }
 
@@ -82,27 +83,27 @@ class NetworkActivity : BaseActivity() {
                 "360P"
             }
 
-            mViewContainer.tvVideoTip.text = getString(R.string.net_video_tip, typeS)
+            binding.tvVideoTip.text = getString(R.string.net_video_tip, typeS)
 
-            mViewContainer.tvSpeed1.text = "${GBW.speedInfo.ping} ms"
-            mViewContainer.tvSpeed2.text = "${GBW.speedInfo.ping} ms"
-            mViewContainer.tvSpeed3.text = "${GBW.speedInfo.ping} ms"
+            binding.tvSpeed1.text = "${GBW.speedInfo.ping + (0..5).random()} ms"
+            binding.tvSpeed2.text = "${GBW.speedInfo.ping + (0..5).random()} ms"
+            binding.tvSpeed3.text = "${GBW.speedInfo.ping + (0..5).random()} ms"
 
         } else {
-            mViewContainer.tvGameTip.text = "Currently no internet connection"
-            mViewContainer.tvVideoTip.text = "Currently no internet connection"
+            binding.tvGameTip.text = "Currently no internet connection"
+            binding.tvVideoTip.text = "Currently no internet connection"
 
-            mViewContainer.ivPoint1.setImageResource(R.mipmap.ic_point_black)
-            mViewContainer.ivTemp1.setImageResource(R.mipmap.ic_arrow_black)
-            mViewContainer.ivPoint2.setImageResource(R.mipmap.ic_point_black)
-            mViewContainer.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
-            mViewContainer.ivPoint3.setImageResource(R.mipmap.ic_point_black)
-            mViewContainer.tv360p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
-            mViewContainer.tv720p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
-            mViewContainer.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+            binding.ivPoint1.setImageResource(R.mipmap.ic_point_black)
+            binding.ivTemp1.setImageResource(R.mipmap.ic_arrow_black)
+            binding.ivPoint2.setImageResource(R.mipmap.ic_point_black)
+            binding.ivTemp2.setImageResource(R.mipmap.ic_arrow_black)
+            binding.ivPoint3.setImageResource(R.mipmap.ic_point_black)
+            binding.tv360p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+            binding.tv720p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
+            binding.tv1080p.setTextColor(ContextCompat.getColor(this, R.color.color_video_black))
         }
 
-        mViewContainer.ivBack.setOnClickListener { finish() }
+        binding.ivBack.setOnClickListener { finish() }
     }
 
     private fun loadAd() {
@@ -115,9 +116,9 @@ class NetworkActivity : BaseActivity() {
     }
 
     private fun showNativeAd(gbwa: GBWa?) {
+        binding.adDefault.isVisible = false
         if (gbwa != null && isFront) {
-            mViewContainer.adDefault.isVisible = false
-            val adViewBind = mViewContainer.adView
+            val adViewBind = binding.adView
             adViewBind.adViewRoot.isVisible = true
             adViewBind.adViewRoot.onGlobalLayout {
                 val adView = adViewBind.adView

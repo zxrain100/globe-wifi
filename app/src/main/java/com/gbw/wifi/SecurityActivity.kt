@@ -65,8 +65,8 @@ class SecurityActivity : BaseActivity() {
     }
 
     private fun showNativeAd(gbwa: GBWa?) {
+        binding.adDefault.isVisible = false
         if (gbwa != null && isFront) {
-            binding.adDefault.isVisible = false
             val adViewBind = binding.adView
             adViewBind.adViewRoot.isVisible = true
             adViewBind.adViewRoot.onGlobalLayout {

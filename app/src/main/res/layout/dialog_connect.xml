@@ -67,6 +67,7 @@
                             android:maxLines="1"
                             android:paddingEnd="50dp"
                             android:paddingStart="16dp"
+                            android:hint="Password"
                             android:singleLine="true"
                             android:textColor="#333333"
                             android:textSize="14sp"
@@ -87,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:gravity="center_vertical"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <CheckBox

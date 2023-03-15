@@ -72,11 +72,12 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             }
         }
 
+        checkPermission()
+
     }
 
     override fun onResume() {
         super.onResume()
-        checkPermission()
         loadAd()
     }
 
@@ -101,15 +102,21 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun scanWifi() {
-        binding.noResultTip.isVisible = true
-        binding.noContent.isVisible = false
-        binding.wifiLayout.isVisible = false
-        binding.topConnection.isVisible = false
-        startAnim()
-        WifiUtils.withContext(applicationContext).scanWifi(this::getScanResults).start()
+        val list = ScanDataHelper.getData()
+        if (list.isNotEmpty()) {
+            scanSuccess(list)
+        } else {
+            binding.noResultTip.isVisible = true
+            binding.noContent.isVisible = false
+            binding.wifiLayout.isVisible = false
+            binding.topConnection.isVisible = false
+            startAnim()
+            WifiUtils.withContext(applicationContext).scanWifi(this::getScanResults).start()
+        }
     }
 
     private fun startAnim() {
+        binding.imgLoading.isVisible = true
         anim = ValueAnimator.ofFloat(0f, 360f)
         anim?.duration = 1500L
         anim?.repeatCount = -1
@@ -120,7 +127,12 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun getScanResults(results: List<ScanResult>) {
-        scanSuccess(results)
+        val list = results.filter { it.SSID.isNotEmpty() }
+
+        if(list.isNotEmpty()){
+            ScanDataHelper.setData(list)
+        }
+        scanSuccess(list)
     }
 
     private fun loadAd() {
@@ -153,6 +165,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 }
             })
             .start()
+
     }
 
 
@@ -167,8 +180,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         } else {
             val wifiManager = getSystemService(WifiManager::class.java)
             binding.noResultTip.isVisible = false
+            binding.wifiLayout.isVisible = true
             if (WifiUtils.withContext(this).isWifiConnected) {
-                binding.wifiLayout.isVisible = true
                 val ssid = wifiManager?.connectionInfo?.ssid?.replace("\"", "")
 
                 val connectItem = results.find { it.SSID == ssid }
@@ -185,7 +198,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 val list = results.filter { (it.SSID != ssid) && it.SSID.isNotEmpty() }
                 adapter?.submitList(list)
             } else {
-                binding.wifiLayout.isVisible = false
                 binding.connectLayout.isVisible = false
                 adapter?.submitList(results)
             }
@@ -199,7 +211,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        checkPermission()
+        if(requestCode ==555){
+            checkPermission()
+        }
     }
 
 
@@ -239,8 +253,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun showNativeAd(gbwa: GBWa?) {
+        binding.adDefault.isVisible = false
         if (gbwa != null && isFront) {
-            binding.adDefault.isVisible = false
             val adViewBind = binding.adView
             adViewBind.adViewRoot.isVisible = true
             adViewBind.adViewRoot.onGlobalLayout {
