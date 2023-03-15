@@ -2,6 +2,6 @@
     <string name="facebook_app_id" translatable="false">715651013008494</string>
     <string name="fb_client_token" translatable="false">0c4e8c176505e5451983893533e86c00</string>
 
-    <string name="app_name">Globe Wifi</string>
+    <string name="app_name">WiFi-Globe</string>
     <string name="net_video_tip">Accordng to your speed,We recommend %s videos</string>
 </resources>

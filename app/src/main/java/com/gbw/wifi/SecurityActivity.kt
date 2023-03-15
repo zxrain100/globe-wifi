@@ -3,6 +3,7 @@ package com.gbw.wifi
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.gbw.wifi.databinding.ActivitySecurityBinding
@@ -36,6 +37,7 @@ class SecurityActivity : BaseActivity() {
 
             if (GBW.speedInfo.rateBit > 0) {
                 binding.tvSpeed.text = getSpeed(GBW.speedInfo.rateBit)
+                binding.tvSpeed.setTextColor(ContextCompat.getColor(this, R.color.color_speed))
                 binding.tvRateByte.text = getRateByte(GBW.speedInfo.rateBit)
             }
             binding.tvIP.text = GBWUtils.getLocalIpAddress()
@@ -50,6 +52,7 @@ class SecurityActivity : BaseActivity() {
         } else {
             binding.imgNetStatus.setImageResource(R.mipmap.ic_security_no_net)
             binding.tvSpeed.text = "0KB/s"
+            binding.tvSpeed.setTextColor(ContextCompat.getColor(this, R.color.white))
         }
 
         binding.ivBack.setOnClickListener { finish() }
