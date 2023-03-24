@@ -10,6 +10,7 @@ import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
 import com.google.firebase.FirebaseApp
 
+//wifi2023324
 class GBW : Application() {
 
     companion object {
